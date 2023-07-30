@@ -74,7 +74,7 @@ class DetailMovieActivity : BaseVMActivity<DetailMovieViewModel, ActivityDetailM
                         binding.tvRated.text = roundToTwoDecimalPlaces(it.vote_average).toString() + "/10 IMDb"
                         binding.tvDescription.text = it.overview
                         binding.tvValueLength.text = it.runtime.toString() + " min"
-                        binding.tvValueLanguage.text = if (it.original_language == "en") "English" else "Indonesia"
+                        binding.tvValueLanguage.text = if (it.original_language == "en") "English" else "Tidak Diketahui"
                         binding.tvValueRating.text = roundToTwoDecimalPlaces(it.vote_average).toString()
                         adapter.addData(it.genres)
                         binding.rvGenre.adapter = adapter
