@@ -36,8 +36,7 @@ class MovieActivity : BaseVMActivity<MovieViewModel, ActivityMovieBinding>() {
     }
 
     override fun onViewCreated(savedInstanceState: Bundle?) {
-        viewModel.getListNowPlayingMovie()
-        viewModel.getListPopularMovie()
+        initViewModel()
         binding.rvNowShowing.apply {
             linearLayoutManager(RecyclerView.HORIZONTAL)
         }
@@ -50,6 +49,11 @@ class MovieActivity : BaseVMActivity<MovieViewModel, ActivityMovieBinding>() {
         binding.ivNotification.setOnClickListener {
             Toast.makeText(applicationContext, "COOMING SOON", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun initViewModel() {
+        viewModel.getListNowPlayingMovie()
+        viewModel.getListPopularMovie()
     }
 
     override fun observerViewModel() {
@@ -69,9 +73,11 @@ class MovieActivity : BaseVMActivity<MovieViewModel, ActivityMovieBinding>() {
 
                 is ViewState.Failed -> {
                     binding.stateLayout.toError {
-                        viewModel.getListNowPlayingMovie()
+                        initViewModel()
                     }
                 }
+
+                else -> {}
             }
         }
 
@@ -91,9 +97,11 @@ class MovieActivity : BaseVMActivity<MovieViewModel, ActivityMovieBinding>() {
 
                 is ViewState.Failed -> {
                     binding.stateLayoutV2.toError {
-                        viewModel.getListPopularMovie()
+                        initViewModel()
                     }
                 }
+
+                else -> {}
             }
         }
     }

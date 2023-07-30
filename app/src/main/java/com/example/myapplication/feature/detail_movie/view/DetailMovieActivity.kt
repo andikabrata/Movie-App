@@ -65,9 +65,7 @@ class DetailMovieActivity : BaseVMActivity<DetailMovieViewModel, ActivityDetailM
     override fun observerViewModel() {
         viewModel.detailMovieLiveData.onResult { state ->
             when (state) {
-                is ViewState.Loading -> {
-//                    binding.stateLayout.toLoading()
-                }
+                is ViewState.Loading -> {}
 
                 is ViewState.Success -> {
                     state.data.let {
@@ -83,17 +81,15 @@ class DetailMovieActivity : BaseVMActivity<DetailMovieViewModel, ActivityDetailM
                     }
                 }
 
-                is ViewState.Failed -> {
+                is ViewState.Failed -> {}
 
-                }
+                else -> {}
             }
         }
 
         viewModel.actorMovieLiveData.onResult { state ->
             when (state) {
-                is ViewState.Loading -> {
-//                    binding.stateLayout.toLoading()
-                }
+                is ViewState.Loading -> {}
 
                 is ViewState.Success -> {
                     state.data.cast.let {
@@ -102,16 +98,15 @@ class DetailMovieActivity : BaseVMActivity<DetailMovieViewModel, ActivityDetailM
                     }
                 }
 
-                is ViewState.Failed -> {
-                }
+                is ViewState.Failed -> {}
+
+                else -> {}
             }
         }
 
         viewModel.videoMovieLiveData.onResult { state ->
             when (state) {
-                is ViewState.Loading -> {
-//                    binding.stateLayout.toLoading()
-                }
+                is ViewState.Loading -> {}
 
                 is ViewState.Success -> {
                     state.data.results.let {
@@ -119,8 +114,9 @@ class DetailMovieActivity : BaseVMActivity<DetailMovieViewModel, ActivityDetailM
                     }
                 }
 
-                is ViewState.Failed -> {
-                }
+                is ViewState.Failed -> {}
+
+                else -> {}
             }
         }
     }
